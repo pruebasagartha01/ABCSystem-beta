@@ -10,12 +10,17 @@ const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 const MySQLAdapter = require("@bot-whatsapp/database/mysql");
 
 /**
+ * Se declaran los atributos y arreglos
+ */
+datos = [];
+
+/**
  * Declaramos las conexiones de MySQL
  */
 const MYSQL_DB_HOST = "localhost";
-const MYSQL_DB_USER = "franprueba";
-const MYSQL_DB_PASSWORD = "1234";
-const MYSQL_DB_NAME = "franprueba";
+const MYSQL_DB_USER = "pepito";
+const MYSQL_DB_PASSWORD = "11111";
+const MYSQL_DB_NAME = "pepito";
 const MYSQL_DB_PORT = "3306";
 
 const flowSecundario = addKeyword(["1"]).addAnswer(
@@ -124,6 +129,7 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
         return fallBack();
       }
       console.log("Aquí viene todo: ", ctx.body);
+      paterno = ctx.body
     }
   )
   .addAnswer(
@@ -134,6 +140,7 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
         return fallBack();
       }
       console.log("Aquí viene todo: ", ctx.body);
+      materno = ctx.body
     }
   )
   .addAnswer(
@@ -144,10 +151,18 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
         return fallBack();
       }
       console.log("Aquí viene todo: ", ctx.body);
+      correo = ctx.body
     }
   )
 
-  .addAnswer("Gracias por la Información, verificando datos de acceso 🕓")
+  .addAnswer("Gracias por la Información, verificando datos de acceso 🕓",null,(ctx) => {
+      pat = paterno
+      mat = materno
+      corr = correo
+      datos.push({'A.Paterno': pat , 'A.Materno': mat, 'Correo': corr})
+      console.log('👉 Informacion del cliente: ', datos)        
+  }
+  )
   .addAnswer("datos guardados con exito", { delay: 1700 })
   .addAnswer(
     "Encuenta de Atencion coloca *siguiente*",

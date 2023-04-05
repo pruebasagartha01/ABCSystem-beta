@@ -1,0 +1,171 @@
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: '0E0743C5AECB0781A60A859889D45552',
+    participant: undefined
+  },
+  messageTimestamp: 1680719188,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: 'Hola',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Hola',
+  from: '56972264462'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: '5F686685FB1C31E05734752B7EE9B93E',
+    participant: undefined
+  },
+  messageTimestamp: 1680719194,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: 'Tu',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Tu',
+  from: '56972264462'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: 'D977EA40A2058219808CFD616F66E63B',
+    participant: undefined
+  },
+  messageTimestamp: 1680719197,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: 'Yo',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Yo',
+  from: '56972264462'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: 'D689F2F3DE94980213690A9F5C030521',
+    participant: undefined
+  },
+  messageTimestamp: 1680719200,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: 'Si',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Si',
+  from: '56972264462'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: '84FB3E9F758C60A68A462E85BE8B1A57',
+    participant: undefined
+  },
+  messageTimestamp: 1680719206,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: '@gmail',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '@gmail',
+  from: '56972264462'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: '53B96926904E280E82129C6BC17A90A8',
+    participant: undefined
+  },
+  messageTimestamp: 1680719226,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: 'siguiente',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'siguiente',
+  from: '56972264462'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: 'F27C094F0637BBBD89CF12284175540C',
+    participant: undefined
+  },
+  messageTimestamp: 1680719241,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: '1',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '1',
+  from: '56972264462'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: '5A44BF3395A3438EF5D2FC2F749D075F',
+    participant: undefined
+  },
+  messageTimestamp: 1680719247,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: '2',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '2',
+  from: '56972264462'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '56972264462@s.whatsapp.net',
+    fromMe: false,
+    id: 'C5E359180B87E3E51570658B5C49A913',
+    participant: undefined
+  },
+  messageTimestamp: 1680719254,
+  pushName: 'Maigo',
+  message: Message {
+    conversation: '3',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '3',
+  from: '56972264462'
+}

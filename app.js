@@ -8,6 +8,7 @@ const {
 const QRPortalWeb = require("@bot-whatsapp/portal");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 const MySQLAdapter = require("@bot-whatsapp/database/mysql");
+const mysql = require("mysql");
 
 /**
  * Se declaran los atributos y arreglos
@@ -18,10 +19,18 @@ let datos = [];
  * Declaramos las conexiones de MySQL
  */
 const MYSQL_DB_HOST = "localhost";
-const MYSQL_DB_USER = "pepito";
-const MYSQL_DB_PASSWORD = "11111";
+const MYSQL_DB_USER = "tester";
+const MYSQL_DB_PASSWORD = "xapala";
 const MYSQL_DB_NAME = "pepito";
 const MYSQL_DB_PORT = "3306";
+
+const connection = mysql.createConnection({
+  host     : MYSQL_DB_HOST,
+  user     : MYSQL_DB_USER,
+  password : MYSQL_DB_PASSWORD,
+  database : MYSQL_DB_NAME
+});
+
 
 const flowSecundario = addKeyword(["1"]).addAnswer(
   "preciona el link👉🏻https://agencyagartha.cl/shop/"
@@ -88,6 +97,7 @@ const flowTerminar = addKeyword(["Gracias", "grac"]).addAnswer(
   null,
   [flowSecundario]
 );
+
 
 /*const flowDatos = addKeyword(["1", "⬅️ Volver al Inicio"])
   .addAnswer(
@@ -166,8 +176,8 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
     nom = nombre
     pat = paterno
     mat = materno
-    corr = correo
-    datos.push({'Nombre:': nom ,'Apellidos': pat + ' ' +  mat, 'Correo': corr})
+    corr = correo    
+    setDataToDB({'Nombre': nom ,'Apellidos': pat + ' ' +  mat, 'Correo': corr});
     console.log('👉 Informacion del cliente: ', datos)        
   }
   )
@@ -201,8 +211,44 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
     "",
     "Ecriba *Finalizar* para terminar la conversacion",
   ]);
+  const createTable  = () => {     
+    let query = "CREATE TABLE IF NOT EXISTS usuarios (nombre varchar(255), apellidos varchar(255), correo varchar(255));";
+    connection.connect();
+    connection.query(query, function (error, results, fields) {
+      if (error) {
+        console.log(error)
+        //throw error;      
+      }
+    });     
+  }
 
-const main = async () => {
+  const exists = async (datos) => {
+    let ex = false;    
+    let query = "SELECT * FROM usuarios WHERE correo = '"+datos.Correo+"';";
+    await connection.query(query, function (error, results, fields) {
+      if (error) throw error;
+      console.log(results, fields);
+      ex = fields.length > 0;
+    });     
+    return ex;
+  }
+
+  const setDataToDB = async (datos) => {        
+    if(await exists(datos) == false){     
+      console.log(datos);      
+      let query = "INSERT INTO usuarios VALUES ('"+datos.Nombre+"', '"+datos.Apellidos+"', '"+datos.Correo+"');";
+      console.log(query);
+      connection.query(query, function (error, results, fields) {
+        if (error) throw error;      
+      });       
+      return true;
+    } else {
+      console.log("El usuario ya existe, no se puede guardar");
+      return false;
+    }    
+  }
+
+const main = async () => {  
   const adapterDB = new MySQLAdapter({
     host: MYSQL_DB_HOST,
     user: MYSQL_DB_USER,
@@ -210,6 +256,8 @@ const main = async () => {
     password: MYSQL_DB_PASSWORD,
     port: MYSQL_DB_PORT,
   });
+  createTable();  
+    
   const adapterFlow = createFlow([
     flowcomentario,
     flownomegusto,

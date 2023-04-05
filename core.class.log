@@ -1,171 +1,95 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '56972264462@s.whatsapp.net',
+    remoteJid: '56981295032@s.whatsapp.net',
     fromMe: false,
-    id: '0E0743C5AECB0781A60A859889D45552',
+    id: '3EB0FF7CBBAE570C874416',
     participant: undefined
   },
-  messageTimestamp: 1680719188,
-  pushName: 'Maigo',
+  messageTimestamp: 1680730310,
+  pushName: 'Sebastián',
   message: Message {
-    conversation: 'Hola',
+    conversation: 'hola',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Hola',
-  from: '56972264462'
+  body: 'hola',
+  from: '56981295032'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '56972264462@s.whatsapp.net',
+    remoteJid: '56981295032@s.whatsapp.net',
     fromMe: false,
-    id: '5F686685FB1C31E05734752B7EE9B93E',
+    id: '3EB09BD9FB5C6EB09978E2',
     participant: undefined
   },
-  messageTimestamp: 1680719194,
-  pushName: 'Maigo',
+  messageTimestamp: 1680730313,
+  pushName: 'Sebastián',
   message: Message {
-    conversation: 'Tu',
+    conversation: 'sebastian',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Tu',
-  from: '56972264462'
+  body: 'sebastian',
+  from: '56981295032'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '56972264462@s.whatsapp.net',
+    remoteJid: '56981295032@s.whatsapp.net',
     fromMe: false,
-    id: 'D977EA40A2058219808CFD616F66E63B',
+    id: '3EB00BBDDD6B832B582895',
     participant: undefined
   },
-  messageTimestamp: 1680719197,
-  pushName: 'Maigo',
+  messageTimestamp: 1680730315,
+  pushName: 'Sebastián',
   message: Message {
-    conversation: 'Yo',
+    conversation: 'solar',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Yo',
-  from: '56972264462'
+  body: 'solar',
+  from: '56981295032'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '56972264462@s.whatsapp.net',
+    remoteJid: '56981295032@s.whatsapp.net',
     fromMe: false,
-    id: 'D689F2F3DE94980213690A9F5C030521',
+    id: '3EB0CDAB24BCBF0D3020E7',
     participant: undefined
   },
-  messageTimestamp: 1680719200,
-  pushName: 'Maigo',
+  messageTimestamp: 1680730317,
+  pushName: 'Sebastián',
   message: Message {
-    conversation: 'Si',
+    conversation: 'cuevas',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Si',
-  from: '56972264462'
+  body: 'cuevas',
+  from: '56981295032'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '56972264462@s.whatsapp.net',
+    remoteJid: '56981295032@s.whatsapp.net',
     fromMe: false,
-    id: '84FB3E9F758C60A68A462E85BE8B1A57',
+    id: '3EB079225DF403CCAB480A',
     participant: undefined
   },
-  messageTimestamp: 1680719206,
-  pushName: 'Maigo',
+  messageTimestamp: 1680730322,
+  pushName: 'Sebastián',
   message: Message {
-    conversation: '@gmail',
+    conversation: 'sebastian.solar@szc.cl',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: '@gmail',
-  from: '56972264462'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '56972264462@s.whatsapp.net',
-    fromMe: false,
-    id: '53B96926904E280E82129C6BC17A90A8',
-    participant: undefined
-  },
-  messageTimestamp: 1680719226,
-  pushName: 'Maigo',
-  message: Message {
-    conversation: 'siguiente',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'siguiente',
-  from: '56972264462'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '56972264462@s.whatsapp.net',
-    fromMe: false,
-    id: 'F27C094F0637BBBD89CF12284175540C',
-    participant: undefined
-  },
-  messageTimestamp: 1680719241,
-  pushName: 'Maigo',
-  message: Message {
-    conversation: '1',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: '1',
-  from: '56972264462'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '56972264462@s.whatsapp.net',
-    fromMe: false,
-    id: '5A44BF3395A3438EF5D2FC2F749D075F',
-    participant: undefined
-  },
-  messageTimestamp: 1680719247,
-  pushName: 'Maigo',
-  message: Message {
-    conversation: '2',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: '2',
-  from: '56972264462'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '56972264462@s.whatsapp.net',
-    fromMe: false,
-    id: 'C5E359180B87E3E51570658B5C49A913',
-    participant: undefined
-  },
-  messageTimestamp: 1680719254,
-  pushName: 'Maigo',
-  message: Message {
-    conversation: '3',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: '3',
-  from: '56972264462'
+  body: 'sebastian.solar@szc.cl',
+  from: '56981295032'
 }

@@ -10,17 +10,14 @@ const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 const MySQLAdapter = require("@bot-whatsapp/database/mysql");
 const mysql = require("mysql");
 
-/**
- * Se declaran los atributos y arreglos
- */
-let datos = [];
+
 
 /**
  * Declaramos las conexiones de MySQL
  */
 const MYSQL_DB_HOST = "localhost";
-const MYSQL_DB_USER = "tester";
-const MYSQL_DB_PASSWORD = "xapala";
+const MYSQL_DB_USER = "pepito";
+const MYSQL_DB_PASSWORD = "11111";
 const MYSQL_DB_NAME = "pepito";
 const MYSQL_DB_PORT = "3306";
 
@@ -30,6 +27,17 @@ const connection = mysql.createConnection({
   password : MYSQL_DB_PASSWORD,
   database : MYSQL_DB_NAME
 });
+
+const createTable  = () => {     
+  let query = "CREATE TABLE IF NOT EXISTS usuarios (nombre varchar(50), apellidos varchar(50), correo varchar(50), contacto numeric(50));";
+  connection.connect();
+  connection.query(query, function (error, results, fields) {
+    if (error) {
+      console.log(error)
+      //throw error;      
+    }
+  });     
+}
 
 
 const flowSecundario = addKeyword(["1"]).addAnswer(
@@ -129,7 +137,11 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
     "",
     "Un gusto porder atenderte 🙌",
   ])
+  .addAnswer(
+    ["Para registrarse ingrese *Registro*"]
+  )
 
+const flowRegistro = addKeyword(['Registro'])
   .addAnswer(
     "¿Tu Nombre?",
     { capture: true /*buttons: [{ body: "❌ Cancelar solicitud" }]*/ },
@@ -169,6 +181,7 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
         return fallBack();
       }
       correo = ctx.body
+      fono =ctx.from
     }
   )
 
@@ -176,12 +189,40 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
     nom = nombre
     pat = paterno
     mat = materno
-    corr = correo    
-    setDataToDB({'Nombre': nom ,'Apellidos': pat + ' ' +  mat, 'Correo': corr});
-    console.log('👉 Informacion del cliente: ', datos)        
+    corr = correo
+    fon = fono
+    setDataToDB({'Nombre': nom ,'Apellidos': pat + ' ' +  mat, 'Correo': corr, 'Contacto': fon});     
   }
   )
-  .addAnswer("datos guardados con exito", { delay: 1700 })
+  .addAnswer("datos guardados con exito", { delay: 1700 }) 
+
+  const exists = async (datos) => {
+    let ex = false;    
+    let query = "SELECT * FROM usuarios WHERE correo = '"+datos.Contacto+"';";
+    await connection.query(query, function (error, results, fields) {
+      if (error) throw error;
+      console.log(results, fields);
+      ex = fields.length > 0;
+    });     
+    return ex;
+  }
+
+  const setDataToDB = async (datos) => {        
+    if(await exists(datos) == false){     
+      console.log(datos);      
+      let query = "INSERT INTO usuarios VALUES ('"+datos.Nombre+"', '"+datos.Apellidos+"', '"+datos.Correo+"', '"+datos.Contacto+"');";
+      console.log(query);
+      connection.query(query, function (error, results, fields) {
+        if (error) throw error;      
+      });       
+      return true;
+    } else {
+      console.log("El usuario ya existe, no se puede guardar");
+      return false;
+    }    
+  }
+
+  const flowEncuesta = addKeyword('9')
   .addAnswer(
     "Encuenta de Atencion coloca *siguiente*",
     { capture: true /*buttons: [{ body: "❌ Cancelar solicitud" }]*/ },
@@ -211,42 +252,6 @@ const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
     "",
     "Ecriba *Finalizar* para terminar la conversacion",
   ]);
-  const createTable  = () => {     
-    let query = "CREATE TABLE IF NOT EXISTS usuarios (nombre varchar(255), apellidos varchar(255), correo varchar(255));";
-    connection.connect();
-    connection.query(query, function (error, results, fields) {
-      if (error) {
-        console.log(error)
-        //throw error;      
-      }
-    });     
-  }
-
-  const exists = async (datos) => {
-    let ex = false;    
-    let query = "SELECT * FROM usuarios WHERE correo = '"+datos.Correo+"';";
-    await connection.query(query, function (error, results, fields) {
-      if (error) throw error;
-      console.log(results, fields);
-      ex = fields.length > 0;
-    });     
-    return ex;
-  }
-
-  const setDataToDB = async (datos) => {        
-    if(await exists(datos) == false){     
-      console.log(datos);      
-      let query = "INSERT INTO usuarios VALUES ('"+datos.Nombre+"', '"+datos.Apellidos+"', '"+datos.Correo+"');";
-      console.log(query);
-      connection.query(query, function (error, results, fields) {
-        if (error) throw error;      
-      });       
-      return true;
-    } else {
-      console.log("El usuario ya existe, no se puede guardar");
-      return false;
-    }    
-  }
 
 const main = async () => {  
   const adapterDB = new MySQLAdapter({
@@ -269,6 +274,7 @@ const main = async () => {
     flowTerminar,
     flowSecundario,
     flowpmenu,
+    flowRegistro,
   ]);
   const adapterProvider = createProvider(BaileysProvider);
   createBot({

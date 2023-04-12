@@ -331,3 +331,5 @@ const main = async () => {
   });
   QRPortalWeb();
 };
+
+main();

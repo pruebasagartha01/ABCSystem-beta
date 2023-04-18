@@ -3,11 +3,13 @@ const {
   createProvider,
   createFlow,
   addKeyword,
+  addAnswer,
 } = require("@bot-whatsapp/bot");
 
 const QRPortalWeb = require("@bot-whatsapp/portal");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 const MySQLAdapter = require("@bot-whatsapp/database/mysql");
+const squel = require("squel");
 const mysql = require("mysql");
 const abc = require("./arrays");
 
@@ -67,7 +69,7 @@ const flowcomentario = addKeyword([
   "estaremos en contacto nuevamente !!!",
 ]);
 
-const flowpmenu = addKeyword(["menu", "Menu", "MENU", "Listado"]).addAnswer([
+const flowpmenu = addKeyword(["M","m","menu", "Menu", "MENU", "Listado"]).addAnswer([
   "MENU📝",
   "",
   "Email",
@@ -131,21 +133,49 @@ const flowTerminar = addKeyword(["Gracias", "grac"]).addAnswer(
   )*/
 
 const flowSaludo = addKeyword(["Hola", "Buenas", "HOLA", "Hola"])
-  .addAnswer([
-    "Hola 😁 En Agartha Marketing Agency te damos la bienvenida.",
-    "Te has comunicado con Agartha Marketing Agency.",
-    "",
-    "Este es nuestro nuevo sistema de Chat Bot de Autoatención ABC System.",
-    "Es una prueba Beta de este sistema por lo que agradecemos tu colaboración y sugerencias.",
-    "Esta supervisada en tiempo real por ejecutivos humanos",
-    "",
-    "Un gusto porder atenderte 🙌",
-  ])
   .addAnswer(
-    ["Para registrarse ingrese *Registro*"]
-  )
+    "Bienvenido envie cualquier caracter para continuar",
+    { capture: true },
+    (ctx, { fallBack }) => {
+      R = false;
+      fon = ctx.from
+      cont = []
+      num = []
+      v = false
+      connection.connect;
+      let consulta = squel.select()
+      .field('nombre')
+      .field('contacto')
+      .from('usuarios');
 
-const flowRegistro = addKeyword(['Registro'])
+      connection.query(consulta.toString(), function (error, registros, campos ){
+        if (error) {
+          throw error
+          }
+
+        registros.forEach(function(registro, indice, arreglo){
+          num.push(registro.contacto)
+          cont.push(registro.nombre , registro.contacto)
+
+          });
+
+        for(i = -1; i < num.length; i++){
+          fon.lastIndexOf(num[i])
+          if(fon.lastIndexOf(num[i]) != -1){
+            v = true
+          }
+        }
+        if(v === false){
+          fallBack("ingrese R para continuar")
+        }else{
+          fallBack("ingrese M para continuar")
+        }
+      })
+    }
+    )
+   
+
+const flowRegistro = addKeyword(['R','r'])
   .addAnswer(
     "¿Tu Nombre?",
     { capture: true },
@@ -245,7 +275,7 @@ const flowRegistro = addKeyword(['Registro'])
 
   const exists = async (datos) => {
     let ex = false;    
-    let query = "SELECT * FROM usuarios WHERE correo = '"+datos.Contacto+"';";
+    let query = "SELECT * FROM usuarios WHERE contacto = '"+datos.Contacto+"';";
     await connection.query(query, function (error, results, fields) {
       if (error) throw error;
       console.log(results, fields);
